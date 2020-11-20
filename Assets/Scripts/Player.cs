@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     {
         transform.position = new Vector3(0, 0, 0);
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
-        _uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
+        _uiManager = GameObject.Find("UI_Manager").GetComponent<UIManager>();
      
         _audioSource = GetComponent<AudioSource>();
 
@@ -97,7 +97,16 @@ public class Player : MonoBehaviour
 
         Vector3 direction = new Vector3(horizontalInput, verticalInput, 0);
 
-        transform.Translate(direction * _speed * Time.deltaTime);
+        if(Input.GetKey(KeyCode.LeftShift))
+        {
+            transform.Translate(direction * _speed * 2 * Time.deltaTime);
+        }
+        else
+        {
+            transform.Translate(direction * _speed * Time.deltaTime);
+        }
+
+       
 
 
         transform.position = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, -3.93f, 0), 0);
