@@ -42,6 +42,9 @@ public class Player : MonoBehaviour
     private bool _isSpeedBoostActive;
     private bool _isShieldsActive;
 
+    [SerializeField]
+    private List<GameObject> _laserPrefabLimit;
+    private int _laserLimit = 15;
    
 
 
@@ -139,7 +142,16 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.15f, 0), Quaternion.identity);
+           
+
+            if (_laserPrefabLimit.Count < _laserLimit)
+            {
+                _laserPrefabLimit.Add(Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.15f, 0), Quaternion.identity));
+                AmmoLeft(_laserLimit);
+            }
+
+            
+               
         }
 
         _audioSource.Play();
@@ -233,6 +245,15 @@ public class Player : MonoBehaviour
         _score += points;
 
         _uiManager.UpdateScore(_score);
+
+    }
+
+    public void AmmoLeft (int _laserLimit)
+    {
+      
+        _laserLimit -= _laserPrefabLimit.Count;
+
+        _uiManager.UpdateAmmoCount(_laserLimit);
 
     }
 
