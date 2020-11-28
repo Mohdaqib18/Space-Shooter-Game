@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private AudioClip _laserShotAudioClip;
     private AudioSource _audioSource;
+    [SerializeField]
+    private CameraShake _cameraShake;
 
 
     [SerializeField]
@@ -173,6 +175,7 @@ public class Player : MonoBehaviour
         if(_shieldVisualiser._shieldsLife == 0 || _isShieldsActive == false)
         {
             _lives--;
+            StartCoroutine(_cameraShake.ShakeRoutine(.15f , .4f));
         }
 
 
