@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     private AudioSource _audioSource;
     [SerializeField]
     private GameObject _enemyLaserPrefab;
-    private float _fireRate =4f;
+    private float _fireRate =7f;
     private float _canFire =-1f;
    
 
@@ -53,7 +53,7 @@ public class Enemy : MonoBehaviour
         if (Time.time > _canFire)
         {
             _canFire = Time.time + _fireRate;
-           GameObject enemyLaserShot = Instantiate(_enemyLaserPrefab, transform.position, Quaternion.identity);
+            GameObject enemyLaserShot = Instantiate(_enemyLaserPrefab, transform.position, Quaternion.identity);
             Laser[] lasers = enemyLaserShot.GetComponentsInChildren<Laser>();
             for(int i= 0 ; i  < lasers.Length ; i++ )
             {
@@ -110,8 +110,5 @@ public class Enemy : MonoBehaviour
             Destroy(this.gameObject , 2.7f);
          }
     }
-
-
     
-        
 }

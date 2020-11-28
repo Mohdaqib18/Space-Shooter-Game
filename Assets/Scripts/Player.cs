@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     private SpawnManager _spawnManager;
     private UIManager _uiManager;
     private Enemy _enemy;
+    private ShieldsVisualiser _shieldVisualiser;
+   
 
     private bool _isTripleShotActive;
     private bool _isSpeedBoostActive;
@@ -53,6 +55,7 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(0, 0, 0);
         _spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
         _uiManager = GameObject.Find("UI_Manager").GetComponent<UIManager>();
+         _shieldVisualiser = _shieldsVisualiser.transform.GetComponent<ShieldsVisualiser>();
      
         _audioSource = GetComponent<AudioSource>();
 
@@ -74,7 +77,10 @@ public class Player : MonoBehaviour
         {
             _audioSource.clip = _laserShotAudioClip;
         }
-        
+        if(_shieldVisualiser == null)
+        {
+            Debug.Log("Sheild Visualiser in Null ");
+        }
     }
 
     // Update is called once per frame
@@ -143,15 +149,25 @@ public class Player : MonoBehaviour
 
     public void Damage()
     {
-        if (_isShieldsActive == true)
+     
+
+        if (_isShieldsActive == true && _shieldVisualiser._shieldsLife == 0 )
         {
             _isShieldsActive = false;
             _shieldsVisualiser.SetActive(false);
-            return;
         }
 
 
-        _lives--;
+        if(_shieldVisualiser._shieldsLife == 0 || _isShieldsActive == false)
+        {
+            _lives--;
+        }
+
+
+
+       
+
+       
 
         if (_lives == 2)
         {
@@ -203,8 +219,13 @@ public class Player : MonoBehaviour
     }
     public void ShieldsActive()
     {
-       _isShieldsActive = true;
+        _isShieldsActive = true;
         _shieldsVisualiser.SetActive(true);
+        _shieldsVisualiser.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+        _shieldVisualiser._shieldsLife = 4;
+
+      
+        
     }
 
     public void AddScore(int points)
@@ -214,6 +235,7 @@ public class Player : MonoBehaviour
         _uiManager.UpdateScore(_score);
 
     }
-        
+
+  
 
 }
