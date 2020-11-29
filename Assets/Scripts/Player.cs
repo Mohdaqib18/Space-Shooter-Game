@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
     private bool _isTripleShotActive;
     private bool _isSpeedBoostActive;
     private bool _isShieldsActive;
+    private bool _isHealthActive;
 
     [SerializeField]
     private List<GameObject> _laserPrefabLimit;
@@ -241,6 +242,39 @@ public class Player : MonoBehaviour
 
       
         
+    }
+
+
+    public void HealthActive()
+    {
+        _isHealthActive = true;
+        
+        if (_lives < 3)
+        {
+            _lives++ ;
+            _uiManager.UpdateLives(_lives);
+        }
+
+        if (_lives == 3)
+        {
+            _leftEngine.SetActive(false);
+            _rightEngine.SetActive(false);
+        }
+       
+        else if (_lives == 2)
+        {
+            _leftEngine.SetActive(false);
+            _rightEngine.SetActive(true);
+        }
+
+        else if (_lives == 1)
+        {
+            _rightEngine.SetActive(false);
+            _leftEngine.SetActive(true);
+        }
+
+
+
     }
 
     public void AddScore(int points)
