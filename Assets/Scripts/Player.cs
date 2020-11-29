@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     private bool _isSpeedBoostActive;
     private bool _isShieldsActive;
     private bool _isHealthActive;
+    private bool _isAmmoActive;
 
     [SerializeField]
     private List<GameObject> _laserPrefabLimit;
@@ -145,20 +146,16 @@ public class Player : MonoBehaviour
         }
         else
         {
-           
 
-            if (_laserPrefabLimit.Count < _laserLimit)
+
+            if (_laserPrefabLimit.Count < _laserLimit )
             {
                 _laserPrefabLimit.Add(Instantiate(_laserPrefab, transform.position + new Vector3(0, 1.15f, 0), Quaternion.identity));
                 AmmoLeft(_laserLimit);
             }
-
-            
-               
         }
 
         _audioSource.Play();
-  
     }
 
 
@@ -273,7 +270,16 @@ public class Player : MonoBehaviour
             _leftEngine.SetActive(true);
         }
 
+    }
 
+
+    public void AmmoActive()
+    {
+        _isAmmoActive = true;
+        _uiManager.UpdateAmmoCount(_laserLimit);
+        _laserPrefabLimit.Clear();
+      
+        
 
     }
 
