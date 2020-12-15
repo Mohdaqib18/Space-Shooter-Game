@@ -22,7 +22,8 @@ public class Player : MonoBehaviour
     private AudioSource _audioSource;
     [SerializeField]
     private CameraShake _cameraShake;
-
+    [SerializeField]
+    private GameObject _homingLaser;
 
     [SerializeField]
     private float _fireRate = 0.15f;
@@ -45,11 +46,12 @@ public class Player : MonoBehaviour
     private bool _isShieldsActive;
     private bool _isHealthActive;
     private bool _isAmmoActive;
+    private bool _isHomingLaserPowerupActive;
 
     [SerializeField]
     private List<GameObject> _laserPrefabLimit;
     private int _laserLimit = 15;
-   
+
 
 
     
@@ -144,9 +146,14 @@ public class Player : MonoBehaviour
         {
             Instantiate(_tripleShotPrefab, transform.position, Quaternion.identity);
         }
-        else
+        else if(_isHomingLaserPowerupActive == true)
         {
 
+            Instantiate(_homingLaser, transform.position, Quaternion.identity);
+        }
+
+        else
+        {
 
             if (_laserPrefabLimit.Count < _laserLimit )
             {
@@ -173,7 +180,7 @@ public class Player : MonoBehaviour
         if(_shieldVisualiser._shieldsLife == 0 || _isShieldsActive == false)
         {
             _lives--;
-            StartCoroutine(_cameraShake.ShakeRoutine(.15f , .4f));
+            StartCoroutine(_cameraShake.ShakeRoutine(.15f , 4f));
         }
 
 
@@ -196,7 +203,7 @@ public class Player : MonoBehaviour
         if (_lives < 1)
         {
             _spawnManager.OnPlayerDeath();
-            Destroy(this.gameObject);
+            Destroy(this.gameObject ,.40f);
         }
     }
 
@@ -278,9 +285,24 @@ public class Player : MonoBehaviour
         _isAmmoActive = true;
         _uiManager.UpdateAmmoCount(_laserLimit);
         _laserPrefabLimit.Clear();
-      
-        
+ 
+    }
 
+    public void HomingLaserActive()
+    {
+        _isHomingLaserPowerupActive = true;
+        StartCoroutine(HomingLaserPowerDownRoutine());
+
+
+             
+    }
+
+
+    IEnumerator HomingLaserPowerDownRoutine()
+    {
+        yield return new WaitForSeconds(5f);
+        _isHomingLaserPowerupActive = false;
+             
     }
 
     public void AddScore(int points)

@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d34b277c685cc448e34cbe8e8fa82b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 2
+  _speed: 1.98
   _enemyLaserPrefab: {fileID: 7004288684931507612, guid: 36a66b9f3fa26b44f8af1694e9a1d120, type: 3}
 --- !u!95 &6328319080771421985
 Animator:

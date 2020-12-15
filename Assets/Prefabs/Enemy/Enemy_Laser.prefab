@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &8394090362589681260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5392980304334142394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8df4986289d60eb489414b5b7d7ad84c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7004288684931507612
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,8 +103,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy Laser
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3162525783798130418, guid: d3c8924a1d260d74a92babdc3436762f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d3c8924a1d260d74a92babdc3436762f, type: 3}
+--- !u!1 &5392980304334142394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3162525783798130419, guid: d3c8924a1d260d74a92babdc3436762f, type: 3}
+  m_PrefabInstance: {fileID: 7004288684112387401}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5392980304334142375 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3162525783798130414, guid: d3c8924a1d260d74a92babdc3436762f, type: 3}

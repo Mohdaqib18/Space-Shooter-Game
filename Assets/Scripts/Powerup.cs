@@ -58,6 +58,9 @@ public class Powerup : MonoBehaviour
                     case 4:
                         player.AmmoActive();
                         break;
+                    case 5:
+                        player.HomingLaserActive();
+                        break;
 
                     default:
                         Debug.Log("Default case selected");

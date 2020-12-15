@@ -163,6 +163,7 @@ MonoBehaviour:
   _rightEngine: {fileID: 1680521727}
   _laserShotAudioClip: {fileID: 8300000, guid: 75676f361bdfeaf41a46623e95df3dbc, type: 3}
   _cameraShake: {fileID: 1110717727}
+  _homingLaser: {fileID: 8719066591972721895, guid: 18b53c7b5a1f27844aeac7957e59387f, type: 3}
   _fireRate: 0.15
   _lives: 3
   _score: 0
@@ -226,7 +227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275005629}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.91, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1932173490}
@@ -1068,7 +1069,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110717723}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -9.97}
+  m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1934350911}
@@ -1123,6 +1124,7 @@ MonoBehaviour:
   - {fileID: 3598622932545332740, guid: fb88667c6e42bc64c81132635640fd75, type: 3}
   - {fileID: 458548705866462554, guid: 86614f42c7eeac8478d118d33ed53ae6, type: 3}
   - {fileID: 3142083544982217604, guid: 51ca30e1cf57c7b419fabcc6c4f42aa8, type: 3}
+  - {fileID: 8030414085421851720, guid: 1938b6069d95f304f88c762e76099898, type: 3}
 --- !u!4 &1250125999
 Transform:
   m_ObjectHideFlags: 0

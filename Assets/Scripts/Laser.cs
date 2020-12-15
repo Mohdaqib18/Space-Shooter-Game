@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
 
 public class Laser : MonoBehaviour
 
 {   [SerializeField]
     private float _speed = 8f;
     private bool _isEnemyLaser = false;
+    private bool _hitsRegistered = false;
   
 
     void Update()
@@ -62,15 +65,20 @@ public class Laser : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        
+       
         if (other.tag == "Player" && _isEnemyLaser == true)
         {
             Player player = other.GetComponent<Player>();
 
-            if (player != null)
+            if (player != null )
             {
-                player.Damage();
+
+                 player.Damage();
+                Destroy(this.gameObject);
+
             }
+           
         }
+      
     }
 }
